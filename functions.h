@@ -21,7 +21,7 @@ struct users
     users*next;
 };
 
-
+//me van a raspar
 //FUNCIONES
 
 void escribirArchivoUsuarios(users**head){
