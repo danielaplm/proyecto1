@@ -15,8 +15,8 @@ int main() {
 		cout << "MENU\n\n";
 		cout << "1) Isertar usuario\n";
 		cout << "2) Insertar peliculas\n";
-        cout << "3) Eliminar pelicula \n";
-        cout << "4) Eliminar usuario \n";
+        cout << "3) Eliminar usuario \n";
+        cout << "4) Eliminar pelicula \n";
 		cout << "5) Mostrar peliculas\n";
 		cout << "6) Mostar usuario \n";
 		cout << "7) Salir\n\n";
@@ -61,7 +61,7 @@ int main() {
             
             
             default:
-                cout << "Opción no valida";
+                cout << "Opcion no valida";
                 break;
         }
 		

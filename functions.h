@@ -101,6 +101,7 @@ void delete_movie(movies**head,string name){
             prev->next=aux->next;
             delete aux;
         }
+        escribirArchivoPeliculas(head);
 
     }
 }
@@ -173,7 +174,7 @@ void mostrar_movies(movies *head) {
     if (head) {
         movies *actual = head;
         while (actual != NULL) {
-            cout << actual->name << actual->genre<<"->";
+            cout << actual->name <<" "<< actual->genre<<"->";
             actual = actual->next;
         }
     }
