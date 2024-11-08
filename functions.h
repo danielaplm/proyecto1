@@ -69,6 +69,7 @@ void insert_movie(movies **head,string name, string genre,int year,int time){ //
     new_node->time=time;
     new_node->next=*head;
     *head=new_node;
+    escribirArchivoPeliculas(head);
 }
 
 void insert_user(users **head,string mail, string country,int age){ //Inserta por cabeza
@@ -193,7 +194,7 @@ void mostrar_users(users*head) {
 //validar peliculas
 bool is_valid_name(const string &name) {
     if (name.empty()) {
-        cout << "Error: El nombre de la película no puede estar vacío." << endl;
+        cout << "Error: El nombre de la pelicula no puede estar vacio." << endl;
         return false; // No es válido
     }
     return true; // Es válido
@@ -201,7 +202,7 @@ bool is_valid_name(const string &name) {
 
 bool is_valid_genre(const string &genre) {
     if (genre.empty()) {
-        cout << "Error: El género de la película no puede estar vacío." << endl;
+        cout << "Error: El genero de la pelicula no puede estar vacio." << endl;
         return false; // No es válido
     }
     return true; // Es válido
@@ -209,7 +210,7 @@ bool is_valid_genre(const string &genre) {
 
 bool is_valid_year(int year) {
     if (year <= 1895) {
-        cout << "Error: El año de lanzamiento no es válido. Debe ser mayor a 1895." << endl;
+        cout << "Error: El año de lanzamiento no es valido. Debe ser mayor a 1895." << endl;
         return false; // No es válido
     }
     return true; // Es válido
@@ -217,7 +218,7 @@ bool is_valid_year(int year) {
 
 bool is_valid_time(int time) {
     if (time <= 0) {
-        cout << "Error: La duración debe ser un número positivo." << endl;
+        cout << "Error: La duracion debe ser un número positivo." << endl;
         return false; // No es válido
     }
     return true; // Es válido
@@ -227,30 +228,31 @@ void insert_movie_with_validation(movies **head) {
     string name, genre;
     int year = 0, time = 0;
 
+    getline(cin, name);
     // Solicitar el nombre de la película
     while (true) {
-        cout << "Ingrese el nombre de la película: ";
+        cout << "Ingrese el nombre de la pelicula: ";
         getline(cin, name);
         if (is_valid_name(name)) break; // Salir del bucle si es válido
     }
 
     // Solicitar el género de la película
     while (true) {
-        cout << "Ingrese el género de la película: ";
+        cout << "Ingrese el genero de la pelicula: ";
         getline(cin, genre);
         if (is_valid_genre(genre)) break; // Salir del bucle si es válido
     }
 
     // Solicitar el año de lanzamiento
     while (true) {
-        cout << "Ingrese el año de lanzamiento (mayor a 1894): ";
+        cout << "Ingrese el ano de lanzamiento (mayor a 1894): ";
         cin >> year;
         if (is_valid_year(year)) break; // Salir del bucle si es válido
     }
 
     // Solicitar la duración en minutos
     while (true) {
-        cout << "Ingrese la duración en minutos (número positivo): ";
+        cout << "Ingrese la duracion en minutos (numero positivo): ";
         cin >> time;
         cin.ignore(); // Limpiar el buffer de entrada
         if (is_valid_time(time)) break; // Salir del bucle si es válido
@@ -258,13 +260,13 @@ void insert_movie_with_validation(movies **head) {
 
     // Inserción si todas las validaciones son correctas
     insert_movie(head,name,genre,year,time);
-    cout << "Película '" << name << "' agregada exitosamente." << endl;
+    cout << "Pelicula '" << name << "' agregada exitosamente." << endl;
 }
 //validacion usuario
 bool is_valid_email(const string &email) {
     const regex pattern(R"((\w+)(\.{1}\w+)*@(\w+)(\.\w+)+)");
     if (!regex_match(email, pattern)) {
-        cout << "Error: El correo electrónico no es válido." << endl;
+        cout << "Error: El correo electronico no es valido." << endl;
         return false; // No es válido
     }
     return true; // Es válido
@@ -272,7 +274,7 @@ bool is_valid_email(const string &email) {
 
 bool is_valid_country(const string &country) {
     if (country.empty()) {
-        cout << "Error: El país no puede estar vacío." << endl;
+        cout << "Error: El pais no puede estar vacio." << endl;
         return false; // No es válido
     }
     return true; // Es válido
@@ -291,22 +293,23 @@ void insert_user_with_validation(users **head) {
     int age = 0;
 
     // Solicitar el correo del usuario
+    getline(cin, mail);
     while (true) {
-        cout << "Ingrese el correo electrónico del usuario: ";
+        cout << "Ingrese el correo electronico del usuario: ";
         getline(cin, mail);
         if (is_valid_email(mail)) break; // Salir del bucle si es válido
     }
 
     // Solicitar el país del usuario
     while (true) {
-        cout << "Ingrese el país del usuario: ";
+        cout << "Ingrese el pais del usuario: ";
         getline(cin, country);
         if (is_valid_country(country)) break; // Salir del bucle si es válido
     }
 
     // Solicitar la edad del usuario
     while (true) {
-        cout << "Ingrese la edad del usuario (número positivo): ";
+        cout << "Ingrese la edad del usuario (numero positivo): ";
         cin >> age;
         if (is_valid_age(age)) break; // Salir del bucle si es válido
     }

@@ -19,14 +19,10 @@ int main() {
         cout << "4) Eliminar usuario \n";
 		cout << "5) Mostrar peliculas\n";
 		cout << "6) Mostar usuario \n";
-		cout << "0) Salir\n\n";
+		cout << "7) Salir\n\n";
 		cout << "\tMarque su opcion: ";
 		cin >> resp;
         switch (resp) {
-            case 0: {
-                cout << "Finalizando programa";            
-            } break;
-
 
             case 1: {
                 insert_user_with_validation(&head_user);
@@ -56,6 +52,10 @@ int main() {
             case 6: {
                 cout << "\t Estas son los usuarios: ";
                 mostrar_users(head_user); //es para que vea como se agg a la lista
+            } break;
+
+            case 7: {
+                cout << "Finalizando programa";            
             } break;
             
             
